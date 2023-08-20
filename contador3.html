@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contador Rápido</title>
+</head>
+<body>
+
+    <h1 id="contador">Cargando...</h1>
+
+    <script>
+        // Cargar el número desde localStorage, si existe
+        let numero = localStorage.getItem('numero') ? parseInt(localStorage.getItem('numero')) : 10000;
+
+        // Función para actualizar el contador en el HTML y en localStorage
+        const actualizarContador = () => {
+            document.getElementById('contador').innerText = numero;
+            localStorage.setItem('numero', numero);
+        };
+
+        // Actualizar el contador inmediatamente
+        actualizarContador();
+
+        // Actualizar el contador cada 100 milisegundos
+        setInterval(() => {
+            numero++;
+            actualizarContador();
+        }, 100);
+    </script>
+
+</body>
+</html>
