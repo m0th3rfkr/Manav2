@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* Estilo para el contador */
+        #numero {
+            font-size: 48px; /* Tamaño del texto */
+            color: white; /* Color del texto */
+        }
+        body {
+            background-color: black; /* Fondo negro para que se vea el texto blanco */
+        }
+    </style>
+    <script>
+        // Inicializar la variable del contador
+        let contador;
+
+        // Verificar si hay un valor guardado en localStorage
+        if (localStorage.getItem("contador")) {
+            // Si hay, usar ese valor
+            contador = parseInt(localStorage.getItem("contador"));
+        } else {
+            // Si no hay, inicializar a 100000
+            contador = 100000;
+        }
+
+        // Función para incrementar el contador
+        function incrementarContador() {
+            contador++;
+            // Guardar el nuevo valor en localStorage
+            localStorage.setItem("contador", contador);
+            // Actualizar el contenido del elemento con id "numero"
+            document.getElementById("numero").innerText = contador.toLocaleString("es-ES");
+        }
+
+        // Incrementar el contador rápidamente cada 100 milisegundos
+        setInterval(incrementarContador, 100);
+    </script>
+</head>
+<body>
+
+    <!-- Muestra el valor actual del contador -->
+    <p id="numero"></p>
+
+    <script>
+        // Inicializar el valor del contador en la página
+        document.getElementById("numero").innerText = contador.toLocaleString("es-ES");
+    </script>
+
+</body>
+</html>
